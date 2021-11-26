@@ -1,6 +1,7 @@
 <html>
 <html lang="es">
 <head>
+	<title> IOT</title>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,10 +9,9 @@
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 </head>
+<body>
 
-
-
-
+</body>
 <script>
 	var firebaseConfig = {
 		apiKey: "AIzaSyB1n3MnLdXV2DXYcEgseZ2NOaO-Vn3qEV8",
@@ -26,22 +26,41 @@
 	firebase.initializeApp(firebaseConfig);
 	var db = firebase.database();
 	var firebaseRef=firebase.database().ref("Valores");
-	firebaseRef.once("value",function(snapshot)
+	
+	function Leer()
 	{
-		snapshot.forEach(function(element)
+		firebaseRef.once("value",function(snapshot)
 		{
-			let d =element.val();
-			document.body.innerHTML = d;
-		});
-	})
+			snapshot.forEach(function(element)
+			{
+				let d =element.val();
+				document.body.innerHTML =  d;
+			
+			
+			});
+		})
+	}
 	
 	info={'Valor 1':"25"}
 	
 	//firebase.database().ref("Valores").set(info)
-	
+
 </script>
 
-<body>
 
-</body>
-	
+<script>
+Leer()
+</script>
+
+
+<script> var timer = null;
+function auto_reload()
+{
+ top.location.href = 'file:///C:/Users/john-/Desktop/IOT/index.html';
+} </script>  <body onload="timer = setTimeout('auto_reload()',1000);">
+
+
+
+</html>
+
+
