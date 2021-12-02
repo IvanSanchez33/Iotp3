@@ -10,6 +10,7 @@
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 </head>
 
+
 <body>
 <center>
 <h1 style="border: 2px solid Tomato";> "P R O Y E C T O 3er P A R C I A L</h1>
@@ -17,18 +18,11 @@
 </body>
 
 
+<body onload="timer=setTimeout('Leer()',10)";></body>
 
-
-<body onload="Leer()"></body>
 
 <p id="demo"></p>
 </center>
-
-
-
-
-
-
 
 <script>
 var firebaseConfig = {
@@ -46,21 +40,32 @@ var firebaseConfig = {
 	var firebaseRef=firebase.database().ref("Valores");
 </script>
 
-<script> 
 
+<script> 
+var timer=null;
 function Leer()
 {
+	
 	firebaseRef.once("value",function(snapshot)
 	{
 		snapshot.forEach(function(element)
 		{
 			let d =element.val();
-			document.getElementById("demo").innerHTML=d;
 			
+			document.getElementById("demo").innerHTML=d;
+			setTimeout(cargar,1000);
 			
 		});
+		
 	})
 }
+
+function cargar()
+{
+	top.location.href = 'https://ivansanchez33.github.io/Iotp3/;
+}
+	
+
 	
 	info={'Valor 1':"25"}
 	
@@ -68,12 +73,6 @@ function Leer()
 
 </script>
 
-<script> 
-var timer = null;
-function auto_reload()
-{
- top.location.href = 'https://ivansanchez33.github.io/Iotp3/';
-} </script>  <body onload="timer = setTimeout('auto_reload()',1000);">
 
 
 </html>
